@@ -11,4 +11,11 @@ const button = document.querySelector(".button")
 // function to open the loot box 
 let openingBox  = () => {
     button.addEventListener('click', () =>{
-    for
+        for (let i = 0; i < 9; i++) {
+            if(probability(80)){
+                let randomThree = Math.floor(Math.random() * 3) + 1;
+                randomThree = threeStar
+                if "trash"
+            }
+
+          }})}
