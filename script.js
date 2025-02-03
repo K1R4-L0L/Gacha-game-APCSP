@@ -17,8 +17,8 @@ let openingBox  = () => {
                 randomThree = threeStar
                 let randomThree = Math.floor(Math.random() * 3) + 0;
             
-                if(randomThree  != indexBool){
-                    hasBook += indexBook[0];
+                if(threeStar[randomThree]  != indexBook[threeStar[randomThree]]){
+                    hasBook += indexBook;
                     console.log(indexBook)
                 }else{
                     console.log(hasBook)
