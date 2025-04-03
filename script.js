@@ -8,6 +8,7 @@ let hasBook = 0;
 const box = document.querySelector(".lootbox")
 const openbox = document.querySelector(".open-lb")
 const button = document.querySelector(".button")
+let character = document.querySelector(".character")
 
 // function to open the loot box 
 let openingBox  = () => {
@@ -15,15 +16,19 @@ let openingBox  = () => {
         for (let i = 0; i < 9; i++) {
             if(probability(80)){
                 randomThree = threeStar
+                for (let i =0; i < 2; i++) {
                 let randomThree = Math.floor(Math.random() * 3) + 0;
-            
+                for ( let i =0; i < 2; i++){
+                if(randomThree) = randomThree[1] {
+                    character.textcontent = threeStar[1];
+                } }
                 if(threeStar[randomThree]  != indexBook[threeStar[randomThree]]){
                     hasBook += indexBook;
                     console.log(indexBook)
                 }else{
                     console.log(hasBook)
                 }
-
+            }
             }
 
           }})}
