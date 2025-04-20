@@ -1,0 +1,29 @@
+.lootbox {
+    display: flex;
+}
+
+.character {
+    display: flex;
+}
+
+.index {
+    display: flex;
+}
+
+.open-lb {
+    display: flex
+}
+
+.counters {
+    display: flex
+}
+
+.open-lb img {
+    height: 30%;
+    width: 20%;
+    
+}
+
+.fourCounter, .fiveCounter, .sixCounter {
+    margin-right: 20px;
+  }

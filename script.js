@@ -1,88 +1,121 @@
-let threeStar = ["trash","poop", "banana"];
-let fourStar = ["github guy", "wumpus","snapchat ghost", "el primo"]
-let fiveStar =["ugly dog", "spiderman", "silly guy", "war criminal", "sparkle", "magik", "bakugo", "deku"]
-let sixStar = ["buster","mercuria","jessica","kafka","jane doe","isolde","skylar", "qingque","ena", "mizuki", "fang","melodie", "colette", "balloon party", "schneider"]
-let indexBook = ["trash","poop", "banana","github guy", "wumpus","snapchat ghost", "el primo","ugly dog", "spiderman", "silly guy", "war criminal", "sparkle", "magik", "bakugo", "deku", "buster","mercuria","jessica","kafka","jane doe","isolde","skylar", "qingque","ena", "mizuki", "fang","melodie", "colette", "balloon party", "schneider"]
+let threeStar = ["trash", "poop", "banana"];
+let fourStar = ["github guy", "wumpus", "snapchat ghost", "el primo"];
+let fiveStar = ["ugly dog", "spiderman", "silly guy", "gurt", "sparkle", "magik", "bakugo", "deku"];
+let sixStar = ["buster", "mercuria", "jessica", "kafka", "jane doe", "isolde", "skylar", "qingque", "ena", "mizuki", "fang", "melodie", "colette", "balloon party", "schneider"];
 let fourScore = 0;
 let fiveScore = 0;
 let sixScore = 0;
-let counter = 0;
-let hasBook = 0;
-const box = document.querySelector(".lootbox")
-const openbox = document.querySelector(".open-lb")
-const button = document.querySelector(".button")
-let character = document.querySelector(".character")
+let hasBook = [];
+const collection = document.querySelector(".book-list ul")
+const fourCounter = document.querySelector(".fourCounter p");
+const fiveCounter = document.querySelector(".fiveCounter p");
+const sixCounter = document.querySelector(".sixCounter p");
+const button = document.querySelector(".button");
+let character = document.querySelector(".character p");
 
-// function to open the loot box 
-let openingBox  = () => {
-    button.addEventListener('click', () =>{
-        for (let i = 0; i < 9; i++) {
-            if(probability(80)){
-                randomThree = threeStar
-                for (let i =0; i < 2; i++) {
-                let randomThree = Math.floor(Math.random() * 3) + 0;
-                for ( let i =0; i < 2; i++){
-                if((randomThree) = randomThree) {
-                    character.textcontent = randomThree;
-                 } }
-                if(threeStar[randomThree]  != indexBook[threeStar[randomThree]]){
-                    hasBook += indexBook;
-                    console.log(indexBook)
-                }else{
-                    console.log(hasBook)
-                }
-            }
-            }
-            if(probability(15)) {
-                randomFour = fourStar
-                if (fourScore > 10) {
-                    let randomFour = Math.floor(Math.random() * 4) + 0;
-                    character.textcontent = randomFour;
-                    if(fourStar[randomFour]  != indexBook[fourStar[randomFour]]){
-                        hasBook += indexBook;
-                        console.log(indexBook)
-                    }else{
-                        console.log(hasBook)
+// Function to open the loot box
+let openingBox = () => {
+    button.addEventListener('click', () => {
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+                let probability = Math.random() * 100;
+                let gotFour = false;
+                let gotFive = false;
+                let gotSix = false;
+
+                // Check the probability for 6★, 5★, and 4★
+                if (probability < 1.5 || sixScore >= 50) {
+                    sixPull();
+                    gotSix = true;
+                } else if (probability < 5 || fiveScore >= 30) {
+                    fivePull();
+                    gotFive = true;
+                } else if (probability < 20 || fourScore >= 10) {
+                    fourPull();
+                    gotFour = true;
+                } else {
+                    let randomThree = Math.floor(Math.random() * threeStar.length);
+                    character.textContent = threeStar[randomThree];
+                    if (!hasBook.includes(threeStar[randomThree])) {
+                        hasBook.push(threeStar[randomThree]);
+                        collector();
+                    } else {
+                        console.log("You have character already");
                     }
-                } else {
-                     randomFour = Math.floor(Math.random() * 4) + 0;
-                    for ( let i =0; i < 3; i++){
-                        let randomFour = Math.floor(Math.random() * 4) + 0;
-                        if((randomFour) = randomFour) {
-                            character.textcontent = randomFour;
-                            if(fourStar[randomFour]  != indexBook[fourStar[randomFour]]){
-                                hasBook += indexBook;
-                                console.log(indexBook)
-                            }else{
-                                console.log(hasBook)
-                            }
-                         } }
                 }
-            }
-            if(probability(1.5)) { 
-                randomFive = fiveStar
-                if (fiveScore > 30) {
-                     randomFive = Math.floor(Math.random() * 7) + 0;
-                    character.textcontent = randomFive;
-                    if(fiveStar[randomFive]  != indexBook[fiveStar[randomFive]]){
-                        hasBook += indexBook;
-                        console.log(indexBook)
-                    }else{
-                        console.log(hasBook)
-                    } 
-                } else {
-                    randomFive = Math.floor(Math.random() * 7) + 0;
-                   for ( let i =0; i < 3; i++){
-                        randomFive = Math.floor(Math.random() * 7) + 0;
-                       if((randomFive) = randomFive) {
-                           character.textcontent = randomFive;
-                           if(fiveStar[randomFive]  != indexBook[fiveStar[randomFive]]){
-                               hasBook += indexBook;
-                               console.log(indexBook)
-                           }else{
-                               console.log(hasBook)
-                           }
-                        } }
-               } 
-                 }
-          }})}
+
+                // Update the scores after the pull
+                ScoreCounter(gotFour, gotFive, gotSix);
+            }, i * 2000); // Delay between each pull
+        }
+    });
+};
+
+// Function to update scores
+let ScoreCounter = (gotFour, gotFive, gotSix) => {
+    // Reset and increment the scores based on the rarity pulled
+    if (gotFour) {
+        fourScore = 0; // Reset score after pulling 4★
+    } else if (fourScore < 10) {
+        fourScore += 1; // Increment if no 4★ was pulled
+    }
+
+    if (gotFive) {
+        fiveScore = 0; // Reset score after pulling 5★
+    } else if (fiveScore < 30) {
+        fiveScore += 1; // Increment if no 5★ was pulled
+    }
+
+    if (gotSix) {
+        sixScore = 0; // Reset score after pulling 6★
+    } else if (sixScore < 80) {
+        sixScore += 1; // Increment if no 6★ was pulled
+    }
+
+    // Update the counters on the webpage
+    fourCounter.textContent = `4★ Score: ${fourScore}`;
+    fiveCounter.textContent = `5★ Score: ${fiveScore}`;
+    sixCounter.textContent = `6★ Score: ${sixScore}`;
+};
+
+// Pulling a 4★ character
+let fourPull = () => {
+    let randomFour = Math.floor(Math.random() * fourStar.length);
+    character.textContent = fourStar[randomFour];
+    if (!hasBook.includes(fourStar[randomFour])) {
+        hasBook.push(fourStar[randomFour]);
+        collector();
+    } else {
+        console.log("You have character already");
+    }
+};
+
+// Pulling a 5★ character
+let fivePull = () => {
+    let randomFive = Math.floor(Math.random() * fiveStar.length);
+    character.textContent = fiveStar[randomFive];
+    if (!hasBook.includes(fiveStar[randomFive])) {
+        hasBook.push(fiveStar[randomFive]);
+        collector();
+    } else {
+        console.log("You have character already");
+    }
+};
+
+// Pulling a 6★ character
+let sixPull = () => {
+    let randomSix = Math.floor(Math.random() * sixStar.length);
+    character.textContent = sixStar[randomSix];
+    if (!hasBook.includes(sixStar[randomSix])) {
+        hasBook.push(sixStar[randomSix]);
+        collector();
+    } else {
+        console.log("You have character already");
+    }
+};
+
+let collector = () => {
+hasBook.textContent = 'Collected Characters: [hasBook]'
+}
+
+openingBox(); // Start the loot box opening process
