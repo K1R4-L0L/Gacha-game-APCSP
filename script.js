@@ -67,7 +67,7 @@ let ScoreCounter = (gotFour, gotFive, gotSix) => {
 
     if (gotSix) {
         sixScore = 0; // Reset score after pulling a six  star 
-    } else if (sixScore < 80) {
+    } else if (sixScore < 50) {
         sixScore += 1; // add by 1 score/ pity if no one was pulled 
     }
 
