@@ -2,6 +2,7 @@ let threeStar = ["trash", "poop", "banana","mr man"];///lists the rarity of most
 let fourStar = ["github guy", "wumpus", "snapchat ghost", "el primo", "eye of rah", "property in egypt"]; // list rarity of 4 star
 let fiveStar = ["ugly dog", "spiderman", "silly guy", "gurt", "sparkle", "magik", "bakugo", "deku"]; // list rarity of 5 star
 let sixStar = ["buster", "mercuria", "jessica", "kafka", "jane doe", "isolde", "skylar", "qingque", "ena", "mizuki", "fang", "melodie", "colette", "balloon party", "schneider"];// lists rarest rarity, 6 star 
+// ALL CHARACTERS ABOVE ARE CHARACTERS FROM A GAME,LOGO, OR MEME, NONE OF THESE NAMES ARE REAL PEOPLE, MOST OF THE CHARACTERS ARE FROM GACHA GAMES OR MOBILE GAMES 
 let fourScore = 0; // sets up pity/ score to get an garunteed character for all below 
 let fiveScore = 0;
 let sixScore = 0;
