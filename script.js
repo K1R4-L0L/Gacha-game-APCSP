@@ -14,9 +14,9 @@ const button = document.querySelector(".button"); // button to open lootbox
 let character = document.querySelector(".character p"); //shows the characters gotten that pull
 
 // Function to open the loot box
-let openingBox = () => {
+let openingBox = (numPulls) => { //parameter for number of pulls ( 10 )
     button.addEventListener('click', () => {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < numPulls; i++) { // sets up a loop about number of pulls 
             setTimeout(() => { /// initializing a timeout so user can view each character individually 
                 let probability = Math.random() * 100; // sets up probability/ percentage for the gacha pulls
                 let gotFour = false;// reminds the score counter they are false at that m,oment
@@ -118,4 +118,4 @@ let collector = () => {
     collection.classList.add("update");
 };
 // calls back the function to start the event listener 
-openingBox();
+openingBox(10);
