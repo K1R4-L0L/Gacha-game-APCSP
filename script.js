@@ -14,7 +14,7 @@ const sixCounter = document.querySelector(".sixCounter p");
 const button = document.querySelector(".button"); // button to open lootbox
 let character = document.querySelector(".character p"); //shows the characters gotten that pull
 
-// Function to open the loot box
+// Function to open the loot box using an event listener with the button
 let openingBox = (numPulls) => { //parameter for number of pulls ( 10 )
     button.addEventListener('click', () => {
         for (let i = 0; i < numPulls; i++) { // sets up a loop about number of pulls 
