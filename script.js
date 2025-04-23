@@ -24,13 +24,13 @@ let openingBox = (numPulls) => { //parameter for number of pulls ( 10 )
                 let gotSix = false;
 
                 // Check the probability in order to pull a charactrt 
-                if (probability < 1.5 || sixScore >= 50) {
+                if (probability < 1.5 || sixScore >= 50) { // six star probability and conditions to be pulled 
                     sixPull();
                     gotSix = true; //shows true for the pity counters
-                } else if (probability < 5 || fiveScore >= 30) {
+                } else if (probability < 5 || fiveScore >= 30) { // five star probability and conditions to be pulled 
                     fivePull();
                     gotFive = true;
-                } else if (probability < 20 || fourScore >= 10) {
+                } else if (probability < 20 || fourScore >= 10) { // four star probability and conditions to be pulled 
                     fourPull();
                     gotFour = true;
                 } else {// three star pull function
@@ -38,7 +38,7 @@ let openingBox = (numPulls) => { //parameter for number of pulls ( 10 )
                     character.textContent = threeStar[randomThree]; // changes character text content to whatever three star pulled 
                     if (!hasBook.includes(threeStar[randomThree])) {
                         hasBook.push(threeStar[randomThree]); // pushes to array to apply later to reveal to the user what characters they have 
-                        collector();
+                        collector(); // calls to the function that shows all the characters 
                     } else {
                         console.log("You have character already");
                     }
@@ -114,7 +114,7 @@ let sixPull = () => {
 };
 //function to show collection of characters 
 let collector = () => {
-    collection.innerHTML = `Collected characters: ${hasBook.join(', ')}`; // adds hasBook array to the text
+    collection.innerHTML = `Collected characters: ${hasBook.join(', ')}`; // adds characters that were added to has book  array to the text
     collection.classList.add("update");
 };
 // calls back the function to start the event listener 
