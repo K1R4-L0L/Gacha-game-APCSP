@@ -120,3 +120,5 @@ let collector = () => {
 };
 // calls back the function to start the event listener 
 openingBox(10);
+
+//IMAGE IS SOURCED FROM PNG MART, NOT MY OWN WORK 
